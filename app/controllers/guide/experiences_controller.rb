@@ -1,14 +1,27 @@
-class ExperiencesController < ApplicationController
+class Guide::ExperiencesController < ApplicationController
+  before_action :authenticate_user!
 
-  def index
-    @experience = Experience.all
+  def new
+    @experience = Experience.new
   end
 
-  def show
+  def create
+    @experience = current_user.experiences.create(experience_params)
+  end
+
+  def update
     @experience = Experience.find(params[:id])
   end
 
-  private
+  def edit
+    @experience = Experience.find(params[:id])
+  end
+
+  def destroy
+
+  end
+
+private
 
   def experience_params
     params.require(:experience).permit(:title,

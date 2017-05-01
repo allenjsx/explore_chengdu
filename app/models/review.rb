@@ -1,3 +1,3 @@
 class Review < ApplicationRecord
-  belongs_to: experience
+  belongs_to :experience
 end
